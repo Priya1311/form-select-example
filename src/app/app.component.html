@@ -2,13 +2,14 @@
   {{title}}
 </h1>
 
-<select
-  ngModel
-  (ngModelChange)="setPickUpAddress($event)">
-  <option *ngFor="let address of addresses$ | async" [ngValue]="address">
-    {{address.name}} ({{address.address_line_1}})
-  </option>
-</select>
+<form connect="newDelivery">
+  <select ngControl ngModel name="pickUpAddress">
+    <option *ngFor="let address of addresses$ | async"
+      [ngValue]="address">
+      {{address.name}} ({{address.address_line_1}})
+    </option>
+  </select>
+</form>
 
 <pre>
 {{ pickUpAddress$ | async | json }}
